@@ -2,6 +2,8 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external'; // expect packages in peerDependecies
+import { terser } from 'rollup-plugin-terser';
+import commonJS from '@rollup/plugin-commonjs';
 import pkg from "./package.json";
 
 const extensions = [".ts", ".tsx"];
@@ -17,6 +19,8 @@ const plugins = [
     typescript({
         typescript: require("typescript"),
     }),
+    commonJS(),
+    terser(),
 ];
 
 export default [
